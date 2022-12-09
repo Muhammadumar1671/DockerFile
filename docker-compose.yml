@@ -1,0 +1,26 @@
+
+version: "3"
+services:
+  
+  ui:
+   image:
+      context: ./frontend
+      dockerfile: Dockerfile
+   ports:
+    -  3000:3000
+   container_name: frontend
+
+ 
+   depends_on:
+    - backend
+   stdin_open: true
+   tty: true
+  backend:
+   image:
+      context: ./backend
+      dockerfile: Dockerfile
+   ports:
+     - 3001:3001
+   container_name: backend
+  
+   
